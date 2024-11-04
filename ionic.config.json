@@ -1,0 +1,7 @@
+{
+  "name": "barcode-reader",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
