@@ -37,7 +37,7 @@ export class HomePage implements OnInit{
       BarcodeScanner.removeAllListeners();
 
     }
-    // this.obtenerDatos("AECD120129HDFRSLA7")
+    // this.obtenerDatos("BOGM120523HDFLRSA8")
   }
 
   async startScan(){

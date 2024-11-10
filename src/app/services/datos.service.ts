@@ -14,8 +14,8 @@ export class DatosService {
 
   constructor(private http: HttpClient) {}
 
-  getDatos(code: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}getEstudentBarrCode/${code}/1`);
+  getDatos(curp: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}getEstudentBarrCode/${curp}/1`);
     // return this.http.get<any>(`${this.apiUrl}`);
   }
 
