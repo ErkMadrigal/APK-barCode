@@ -22,7 +22,8 @@ import { ModalController } from '@ionic/angular';
   selector: 'app-barcode-scanning',
   template: `
     <ion-header class="ion-no-border">
-      <ion-toolbar color="tertiary">
+      <ion-toolbar color="dark" mode="ios">
+        <ion-title>Captura el Codigo</ion-title>
         <ion-buttons slot="end">
           <ion-button (click)="closeModal()">
             <ion-icon name="close"></ion-icon>
@@ -57,7 +58,7 @@ import { ModalController } from '@ionic/angular';
         top: 50%;
         transform: translate(-50%, -50%);
         border-radius: 16px;
-        width: 200px;
+        width: 400px;
         height: 200px;
         border: 6px solid white;
         box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.3);

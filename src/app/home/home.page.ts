@@ -15,8 +15,11 @@ export class HomePage implements OnInit{
 
   scanResults = ''
   nombre = ''
+  curp = ''
   telefono = ''
-  emial = ''
+  id = '';
+  message = '';
+  status = '';
 
   constructor(
     private modalController: ModalController,
@@ -34,7 +37,7 @@ export class HomePage implements OnInit{
       BarcodeScanner.removeAllListeners();
 
     }
-    this.obtenerDatos("301006")
+    // this.obtenerDatos("AECD120129HDFRSLA7")
   }
 
   async startScan(){
@@ -71,13 +74,36 @@ export class HomePage implements OnInit{
       (response) => {
         this.datos = response;
         console.log('Datos obtenidos:', this.datos);
-        this.nombre = `${this.datos.nombres} ${this.datos.paterno} ${this.datos.materno}`;
-        this.cdr.detectChanges();
+        if(this.datos){
+          this.status = "ok"
+          this.id = this.datos.data.id
+          this.nombre = `${this.datos.data.nombres} ${this.datos.data.apellidos}`;
+          this.curp = this.datos.data.curp;
+          this.telefono = this.datos.data.telefono;
+          this.cdr.detectChanges();
+  
+          console.log("envio de mensaje whatsApp")
+        }else{
+          this.status = "error"
+          this.message = "No se encontraron coincidencias en la BD"
+        }
       },
       (error) => {
         console.error('Error al obtener datos:', error);
       }
     );
   }
+
+  // ingresarDatos(id: string): void {
+  //   this.datosService.setDatos(id).subscribe(
+  //     (response) => {
+  //       this.datos = response;
+  //       console.log('Datos ingresados:', this.datos);
+  //     },
+  //     (error) => {
+  //       console.error('Error al obtener datos:', error);
+  //     }
+  //   );
+  // }
 
 }

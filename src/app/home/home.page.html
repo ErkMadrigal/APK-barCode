@@ -1,24 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Codigo de barras
+      Conexion Escolar Efectiva
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-img class="ion-margin-top ion-margin-bottom"
+  src="https://mc-madrigal.com/conexionescolar/public/assets/logos/logo_Phone.jpg"
+  alt="Conexion Escolar Efectiva"
+  ></ion-img>
   <ion-button expand="block" (click)="startScan()" mode="ios">scanner</ion-button>
 
 
 
-  <ion-card mode="ios" *ngIf="scanResults">
+  <ion-card mode="ios" *ngIf="scanResults" class="ion-margin-top ion-margin-bottom">
     <ion-card-header>
-      <ion-card-title>{{scanResults}}</ion-card-title>
-      <ion-card-subtitle>{{nombre}}</ion-card-subtitle>
+      <ion-card-subtitle>{{scanResults}}</ion-card-subtitle>
+      <ion-card-title>{{nombre}}</ion-card-title>
+      <!-- <ion-card-subtitle>{{curp}}</ion-card-subtitle> -->
     </ion-card-header>
   
-    <ion-card-content>
-      <pre>{{ datos | json }}</pre>
+    <ion-card-content *ngIf="status === 'ok'; else errorTemplate">
+      <pre >Telefono padreo o tutor: <br>{{telefono}}</pre>
+      <!-- <pre>{{ datos | json }}</pre> -->
     </ion-card-content>
+
+    <ng-template #errorTemplate>
+      <ion-card-content>
+        <ion-text color="danger">{{message}}</ion-text>
+      </ion-card-content>
+    </ng-template>
   </ion-card>
 </ion-content>
